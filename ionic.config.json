@@ -1,0 +1,7 @@
+{
+  "name": "miappdidactica",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
