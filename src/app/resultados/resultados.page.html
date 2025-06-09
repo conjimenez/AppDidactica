@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Resultados Finales</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="resultado-box">
+    <h2>🎯 Resultado de Actividad 1:</h2>
+    <ion-text color="success">
+      <h3>{{ actividad1 }} puntos</h3>
+    </ion-text>
+
+    <h2>🧠 Resultado de Actividad 2:</h2>
+    <ion-text color="tertiary">
+      <h3>{{ actividad2 }} puntos</h3>
+    </ion-text>
+  </div>
+<ion-button expand="block" color="danger" (click)="reiniciarPuntajes()">Reiniciar Puntajes</ion-button>
+
+  <ion-button expand="full" color="medium" routerLink="/home">Volver al Inicio</ion-button>
+</ion-content>

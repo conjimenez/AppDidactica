@@ -25,3 +25,81 @@
 #container a {
   text-decoration: none;
 }
+
+.animated-input {
+  transition: transform 1s ease-in-out;
+}
+
+.animated {
+  transform: translateX(20px);
+}
+
+ion-content {
+  background: linear-gradient(135deg, #e0f7fa, #ffe0b2);
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.usuario-box h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #4e342e;
+  margin-bottom: 20px;
+}
+
+ion-item {
+  --background: #ffffffcc;
+  --border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+ion-label {
+  color: #5d4037;
+  font-weight: bold;
+}
+
+.botones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+ion-button {
+  font-size: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.animated-input {
+  transition: transform 1s ease-in-out;
+}
+
+.animated {
+  transform: translateX(25px);
+}
+
+.mat-datepicker-content,
+.mat-calendar {
+  background-color: white !important;
+  color: black !important;
+}
+
+.mat-calendar-body-cell-content {
+  color: black !important;
+}
+
+.mat-datepicker-content {
+  background: #fff;
+  border-radius: 10px;
+}
+
+.mat-calendar-body-cell-content {
+  font-size: 14px;
+  color: #000;
+  
+}

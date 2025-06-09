@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Actividad 2: ¿Cuál es el mayor?</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <img src="assets/icon/mayor.jpg" alt="Comparación de números" class="imagen-actividad">
+
+  <div class="pregunta">
+    <h2>¿Cuál número es mayor?</h2>
+  </div>
+
+  <div class="numeros">
+    <ion-button expand="full" color="tertiary" (click)="verificar(numeroA)">
+      {{ numeroA }}
+    </ion-button>
+
+    <ion-button expand="full" color="tertiary" (click)="verificar(numeroB)">
+      {{ numeroB }}
+    </ion-button>
+  </div>
+
+  <div class="resultado">
+    <h3 *ngIf="resultado">{{ resultado }}</h3>
+  </div>
+
+<ion-button expand="block" color="primary" (click)="volverAlHome()">
+    Volver al Inicio
+  </ion-button>
+  
+  <ion-button expand="full" color="warning" (click)="generarNumeros()">Nueva pregunta</ion-button>
+
+</ion-content>
