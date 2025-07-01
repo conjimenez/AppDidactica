@@ -1,68 +1,51 @@
-import { Component, Renderer2 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { NavController } from '@ionic/angular';
-
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
+  standalone: false, // Este componente no es standalone
   styleUrls: ['./home.page.scss'],
-  standalone: false,
 })
 export class HomePage {
-  usuario: string = '';
   nombre: string = '';
   apellido: string = '';
   nivelEducacion: string = '';
-  fechaNacimiento: Date | null = null;
+  fechaNacimiento: string = '';
+  segmentValue: string = 'instrucciones';
+  usuario: string = 'Estudiante';
 
-  constructor(
-    private route: ActivatedRoute,
-    private alertCtrl: AlertController,
-    private renderer: Renderer2,
-    private navCtrl: NavController
-  ) {
-    this.route.queryParams.subscribe((params: any) => {
-      this.usuario = params['usuario'] || 'Invitado';
+  constructor(private route: ActivatedRoute, private router: Router) {
+    // Tomar parámetro de la URL
+    this.route.queryParams.subscribe(params => {
+      if (params['usuario']) {
+        this.usuario = params['usuario'];
+        localStorage.setItem('usuario', this.usuario);
+      } else {
+        // Si no viene en la URL, revisar si está guardado
+        const guardado = localStorage.getItem('usuario');
+        if (guardado) {
+          this.usuario = guardado;
+        }
+      }
     });
-  }
-
-  async mostrarInfo() {
-    const mensaje = `Nombre: ${this.nombre}
-    Apellido: ${this.apellido}
-    Nivel: ${this.nivelEducacion}
-    Fecha de Nacimiento: ${this.fechaNacimiento ? this.fechaNacimiento.toLocaleDateString() : 'No definida'}`;
-
-    const alert = await this.alertCtrl.create({
-      header: 'Datos Ingresados',
-      message: mensaje,
-      buttons: ['OK']
-    });
-    await alert.present();
-  }
-  
-  irAlLogin() {
-    this.navCtrl.navigateRoot('/login');
   }
 
   limpiar() {
     this.nombre = '';
     this.apellido = '';
     this.nivelEducacion = '';
-    this.fechaNacimiento = null;
+    this.fechaNacimiento = '';
+  }
 
-    const nombreInput = document.querySelector('.nombre-input');
-    const apellidoInput = document.querySelector('.apellido-input');
+  mostrarInfo() {
+    console.log('Nombre:', this.nombre);
+    console.log('Apellido:', this.apellido);
+    console.log('Nivel de educación:', this.nivelEducacion);
+    console.log('Fecha de nacimiento:', this.fechaNacimiento);
+  }
 
-    if (nombreInput) {
-      this.renderer.addClass(nombreInput, 'animated');
-      setTimeout(() => this.renderer.removeClass(nombreInput, 'animated'), 1000);
-    }
-
-    if (apellidoInput) {
-      this.renderer.addClass(apellidoInput, 'animated');
-      setTimeout(() => this.renderer.removeClass(apellidoInput, 'animated'), 1000);
-    }
+  irAlLogin() {
+    this.router.navigate(['/login']);
   }
 }

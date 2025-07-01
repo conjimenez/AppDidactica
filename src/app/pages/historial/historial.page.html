@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historial de Fotos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button expand="full" color="danger" (click)="limpiarHistorial()">
+    Limpiar Historial
+  </ion-button>
+
+  <ion-list *ngIf="fotos.length > 0; else noFotos">
+    <ion-item *ngFor="let foto of fotos">
+      <ion-thumbnail slot="start">
+        <img [src]="foto.imagen" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ foto.instruccion }}</h2>
+        <p>{{ foto.fecha | date: 'short' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noFotos>
+    <p>No hay fotos guardadas.</p>
+  </ng-template>
+</ion-content>

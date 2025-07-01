@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Actividad con Cámara</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>{{ instruccion }}</h2>
+
+  <ion-button expand="full" (click)="tomarFoto()">
+    Tomar Foto
+  </ion-button>
+
+  <div *ngIf="photo">
+    <h3>Tu Foto:</h3>
+    <ion-img [src]="photo"></ion-img>
+  </div>
+
+  <ion-button routerLink="/home" expand="full" color="medium">
+  Volver al inicio
+</ion-button>
+
+</ion-content>

@@ -15,6 +15,12 @@
         <ion-input [(ngModel)]="password" type="password" required pattern="[0-9]{4}"></ion-input>
       </ion-item>
       <ion-button expand="full" (click)="login()">Ingresar</ion-button>
+
+      <ion-button fill="clear" routerLink="/registro">
+  ¿No tienes cuenta? Regístrate aquí
+</ion-button>
+
     </ion-card-content>
   </ion-card>
 </ion-content>
+

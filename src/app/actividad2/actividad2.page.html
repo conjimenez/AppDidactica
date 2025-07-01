@@ -21,9 +21,13 @@
     </ion-button>
   </div>
 
-  <div class="resultado">
-    <h3 *ngIf="resultado">{{ resultado }}</h3>
-  </div>
+<div class="resultado" [ngClass]="{
+  'correcto': resultado === '¡Muy bien!',
+  'incorrecto': resultado === 'Ups, intenta de nuevo.'
+}">
+  <h3 *ngIf="resultado">{{ resultado }}</h3>
+</div>
+
 
 <ion-button expand="block" color="primary" (click)="volverAlHome()">
     Volver al Inicio

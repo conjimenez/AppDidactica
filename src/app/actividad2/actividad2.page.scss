@@ -27,10 +27,19 @@ ion-button {
 .resultado {
   margin-top: 20px;
   font-size: 20px;
-  color: #388e3c;
   text-align: center;
   animation: aparecer 0.4s ease-in;
 }
+
+/* Colores diferentes según resultado */
+.resultado.correcto {
+  color: #388e3c; /* verde éxito */
+}
+
+.resultado.incorrecto {
+  color: #d32f2f; /* rojo error */
+}
+
 
 @keyframes aparecer {
   from {

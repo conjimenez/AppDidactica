@@ -6,7 +6,7 @@
 
 <ion-content class="ion-padding">
   <div class="usuario-box">
-    <h2 [@slideInLeft]>Hola, {{ usuario }}</h2>
+    <h2>Hola, {{ usuario }}</h2>
   </div>
 
   <ion-item class="animated-input nombre-input">
@@ -43,10 +43,69 @@
   <ion-button expand="block" routerLink="/actividad1">Ir a Actividad 1</ion-button>
   <ion-button expand="block" routerLink="/actividad2">Ir a Actividad 2</ion-button>
   <ion-button expand="block" routerLink="/resultados" color="tertiary">Ver Resultados</ion-button>
+  <ion-button expand="full" routerLink="/actividad-camara">Actividad Fotográfica</ion-button>
+  <ion-button expand="full" routerLink="/historial">Ver Historial de Fotos</ion-button>
+  <ion-button expand="block" routerLink="/json-placeholder">Ver Posts API</ion-button>
 
-  <ion-button expand="block" color="danger" (click)="irAlLogin()">
-    Cerrar Sesión
-  </ion-button>
+  <ion-button expand="block" color="danger" (click)="irAlLogin()">Cerrar Sesión</ion-button>
+
+  <ion-segment [(ngModel)]="segmentValue">
+    <ion-segment-button value="instrucciones">
+      Instrucciones
+    </ion-segment-button>
+    <ion-segment-button value="progreso">
+      Progreso
+    </ion-segment-button>
+    <ion-segment-button value="recomendaciones">
+      Recomendaciones
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="segmentValue">
+    <div *ngSwitchCase="'instrucciones'">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Instrucciones de Uso</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Lee atentamente cada instrucción antes de comenzar.</p>
+          <p>Presiona los botones para navegar entre las actividades.</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div *ngSwitchCase="'progreso'">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Progreso del Estudiante</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label>Actividad 1</ion-label>
+              <ion-badge color="success">Completado</ion-badge>
+            </ion-item>
+            <ion-item>
+              <ion-label>Actividad 2</ion-label>
+              <ion-badge color="warning">En Progreso</ion-badge>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div *ngSwitchCase="'recomendaciones'">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Recomendaciones de Estudio</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Dedica al menos 30 minutos diarios al repaso.</p>
+          <p>Pide ayuda si algo no entiendes.</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
 </ion-content>
 
 <ion-footer>
@@ -54,6 +113,3 @@
     <ion-title class="ion-text-center">¡Gracias por usar la app!</ion-title>
   </ion-toolbar>
 </ion-footer>
-
-
-

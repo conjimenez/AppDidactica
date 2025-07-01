@@ -1,20 +1,17 @@
 import { Component } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  standalone: false,
+  standalone: false, // Este componente no es standalone
 })
 export class LoginPage {
   usuario: string = '';
   password: string = '';
 
-  constructor(
-    private navCtrl: NavController,
-    private alertCtrl: AlertController
-  ) {}
+  constructor(private navCtrl: NavController, private alertCtrl: AlertController) {}
 
   login() {
     if (
@@ -25,6 +22,8 @@ export class LoginPage {
       this.navCtrl.navigateForward(['/home'], {
         queryParams: { usuario: this.usuario }
       });
+      localStorage.setItem('usuario', this.usuario);
+
     } else {
       this.presentAlert(
         'Datos inválidos',

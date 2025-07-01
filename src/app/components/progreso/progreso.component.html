@@ -1,0 +1,15 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Progreso del Estudiante</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let p of progreso">
+        <ion-label>
+          {{ p.actividad }}
+        </ion-label>
+        <ion-badge color="success">{{ p.completado }}</ion-badge>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
